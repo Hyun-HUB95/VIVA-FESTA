@@ -1,0 +1,305 @@
+/* ✅ 전체 폰트 설정 */
+body {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f8f9fa; /* 부드러운 배경색 */
+}
+
+/* ✅ 네비게이션 폰트 */
+.navbar {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* ✅ 버튼 & 링크 */
+button,
+input,
+select,
+a {
+  font-family: 'Pretendard', sans-serif;
+  cursor: pointer;
+}
+
+/* ✅ 달력 스타일 (숫자 가독성 고려) */
+.calendar-table {
+  font-family: 'Spoqa Han Sans Neo', 'Noto Sans KR', sans-serif;
+  font-size: 1.1rem;
+}
+
+/* ✅ 달력 날짜 (더 가독성 높게) */
+.calendar-day {
+  font-family: 'IBM Plex Sans KR', sans-serif;
+  font-weight: 500;
+}
+
+/* ✅ 축제 정보 카드 */
+.festival-card {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 1rem;
+}
+
+/* ✅ 공통 스타일 */
+.darkModeClass {
+  border-radius: 5px;
+  transition: 0.3s;
+  background: transparent;
+}
+
+/* ✅ 라이트 모드 스타일 */
+.light-mode,
+.light-mode-hover {
+  color: #333;
+  border-color: #333;
+}
+
+.light-mode-hover:hover {
+  background: #333;
+  color: white;
+}
+
+/* ✅ 다크 모드 스타일 */
+.dark-mode,
+.dark-mode-hover {
+  color: white;
+  border-color: white;
+}
+
+.dark-mode-hover:hover {
+  background: white;
+  color: #333;
+}
+
+/* ✅ 라이트 모드 스타일 div용*/
+.light-mode.div {
+  color: #333;
+  background-color: white;
+  border-color: #333;
+}
+
+/* ✅ 다크 모드 스타일 div용*/
+.dark-mode.div {
+  color: white;
+  background-color: #181818;
+  border-color: white;
+}
+
+/* ✅ 라이트 모드 글자 스타일 */
+.light-mode.span {
+  color: #333;
+}
+
+/* ✅ 다크 모드 글자 스타일*/
+.dark-mode.span {
+  color: white;
+}
+
+/* ✅ input의 placeholder 색상 */
+.light-mode input::placeholder,
+.light-mode-hover input::placeholder {
+  color: #999;
+}
+
+.dark-mode input::placeholder,
+.dark-mode-hover input::placeholder {
+  color: #ddd;
+}
+
+/* ✅ select (드롭다운) */
+.light-mode select {
+  background-color: white;
+  color: black;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.dark-mode select {
+  background-color: #333;
+  color: white;
+  border: 1px solid #666;
+  cursor: pointer;
+}
+
+.dark-mode option {
+  background-color: #444;
+  color: white;
+}
+
+.dark-mode input[type='date']::-webkit-calendar-picker-i ndicator {
+  filter: invert(1);
+  cursor: pointer;
+}
+
+/* ✅ 체크박스 & 라디오 버튼 */
+.dark-mode input[type='checkbox'],
+.dark-mode input[type='radio'] {
+  accent-color: white;
+}
+
+.light-mode input[type='checkbox'],
+.light-mode input[type='radio'] {
+  accent-color: black;
+}
+
+/* ✅ 테이블 스타일 */
+.light-mode table {
+  background-color: white;
+  color: black;
+  border-collapse: collapse;
+}
+
+.dark-mode table {
+  background-color: #222;
+  color: white;
+  border-collapse: collapse;
+}
+
+.dark-mode thead {
+  background-color: #333;
+}
+
+.dark-mode tbody tr:nth-child(even) {
+  background-color: #2a2a2a;
+}
+
+/* ✅ 툴팁 */
+.dark-mode .tooltip-inner {
+  background-color: #333;
+  color: white;
+}
+
+.dark-mode .tooltip-arrow::before {
+  border-top-color: #333 !important;
+}
+
+/* ✅ 스크롤바 */
+.dark-mode ::-webkit-scrollbar {
+  width: 10px;
+}
+
+.dark-mode ::-webkit-scrollbar-track {
+  background: #222;
+}
+
+.dark-mode ::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 5px;
+}
+/* ✅ 다크 모드에서 달력 아이콘 스타일 변경 (크롬, 엣지, 사파리) */
+.dark-mode input[type='date']::-webkit-calendar-picker-indicator {
+  filter: invert(1); /* 아이콘 색 반전 */
+  cursor: pointer;
+}
+.light-mode.active,
+.light-mode-hover.active {
+  background-color: #333 !important;
+  color: white !important;
+}
+
+/* ✅ 다크 모드에서 .active */
+.dark-mode.active,
+.dark-mode-hover.active {
+  background-color: white !important;
+  color: #333 !important;
+}
+/* ✅ 다크 모드 스타일 */
+.dark-mode.custom-pagination .page-item.active .page-link {
+  background-color: white !important; /* 활성 페이지 - 흰색 */
+  border-color: white !important;
+  color: #333 !important; /* 텍스트 색상 - 검정 */
+}
+
+.dark-mode.custom-pagination .page-link {
+  color: white !important; /* 기본 페이지 텍스트 색상 - 흰색 */
+  background-color: #333 !important; /* 활성 페이지 - 흰색 */
+}
+
+.dark-mode.custom-pagination .page-item .page-link:hover {
+  background-color: #ddd !important; /* 마우스 오버 시 - 연한 회색 */
+  color: #333 !important;
+}
+
+/* ✅ 라이트 모드 스타일 */
+.light-mode.custom-pagination .page-item.active .page-link {
+  background-color: #333 !important; /* 활성 페이지 - 검정 */
+  border-color: #333 !important;
+  color: white !important; /* 텍스트 색상 - 흰색 */
+}
+
+.light-mode.custom-pagination .page-link {
+  color: #333 !important; /* 기본 페이지 텍스트 색상 - 검정 */
+}
+
+.light-mode.custom-pagination .page-item .page-link:hover {
+  background-color: #666 !important; /* 마우스 오버 시 - 어두운 회색 */
+  color: white !important;
+}
+html {
+  scroll-behavior: auto !important;
+}
+
+button.dark-mode-hover {
+  background-color: white;
+  color: #333;
+}
+
+button.light-mode-hover {
+  background-color: #333;
+  color: white;
+}
+button.light-mode-hover:hover {
+  background-color: #616161;
+  color: white;
+  border-color: #9c9c9c;
+}
+
+button.dark-mode-hover:hover {
+  background-color: #333;
+  color: white;
+  border-color: white;
+}
+
+.ButtonGroup.dark-mode-hover {
+  background-color: #333;
+  color: white;
+}
+
+.ButtonGroup.light-mode-hover {
+  background-color: white;
+  color: #333;
+}
+.ButtonGroup.light-mode-hover:hover {
+  background-color: #e0e0e0;
+  color: black;
+}
+
+.ButtonGroup.dark-mode-hover:hover {
+  background-color: #616161;
+  color: white;
+  border-color: #9c9c9c;
+}
+.form-container.dark-mode {
+  background-color: #333;
+  color: white;
+  box-shadow: 0 4px 8px rgba(233, 233, 233, 0.1);
+}
+
+.form-container.light-mode {
+  background-color: white;
+  color: #333;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+/* ✅ 모달 다크/라이트 모드 */
+.modal.dark-mode .modal-content {
+  background-color: #333;
+  color: white;
+  border: 1px solid #555;
+}
+
+.modal.light-mode .modal-content {
+  background-color: white;
+  color: #333;
+  border: 1px solid #ddd;
+}

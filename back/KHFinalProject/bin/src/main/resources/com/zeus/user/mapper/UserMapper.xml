@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zeus.user.mapper.UserMapper">
+
+	<!-- User 데이터 삽입 -->
+	<insert id="insert" parameterType="User">
+		INSERT INTO USER_ACCOUNT (
+		NO, ID, PWD,NAME,EMAIL, PHONE, GENDER, REG_DATE, ROLE, BIRTH, REGION, PROVIDER,NICKNAME
+		) VALUES (
+		SEQ_USER_ACCOUNT_NO.NEXTVAL,
+		#{id},
+		#{pwd},
+		#{name},
+		#{email},
+		#{phone},
+		#{gender},
+		SYSDATE,
+		#{role},
+		#{birth},
+		#{region},
+		#{provider},
+		#{nickname}
+		)
+	</insert>
+	<!-- ################################################################################################## -->
+	<!-- 회원 정보를 수정. -->
+	<!-- resultType="User" -->
+	<update id="updateUserData" parameterType="User">
+	    UPDATE USER_ACCOUNT
+	    SET 
+	        <choose>
+	            <when test="provider == 'common'">
+	                NAME = #{name},
+	                PWD = #{pwd},
+	                NICKNAME = #{nickname},
+	                BIRTH = #{birth},
+	                GENDER = #{gender},
+	                PHONE = #{phone},
+	                REGION = #{region}
+	            </when>
+	            <otherwise>
+	                NAME = #{name},
+	                PHONE = #{phone},
+	                GENDER = #{gender},
+	                BIRTH = #{birth},
+	                REGION = #{region},
+	                NICKNAME = #{nickname},
+	                PROVIDER = #{provider}
+	            </otherwise>
+	        </choose>
+	    WHERE NO = #{no}
+	</update>
+	<!-- ################################################################################################## -->
+	<!-- ################################################################################################## -->
+	<!-- 회원 탈퇴를 위한 사용자 조회 쿼리. -->
+	<select id="getUserByNo" parameterType="Integer" resultType="User">
+	    SELECT * 
+	    FROM USER_ACCOUNT 
+	    WHERE NO = #{userNo}
+	</select>
+	<!-- 회원 탈퇴 쿼리 (비밀번호 확인을 서비스 레이어에서 처리). -->
+	<delete id="deleteUserData" parameterType="Integer">
+	    DELETE
+	    FROM USER_ACCOUNT
+	    WHERE NO = #{userNo}
+	</delete>
+	<!-- ################################################################################################## -->
+	<!-- ################################################################################################## -->
+	<!-- 로그인 된 사용자(토큰 no = userNo)의 장바구니 조회 쿼리. -->
+	<select id="getCartData" parameterType="Integer" resultType="CartDTO">
+	    SELECT C.NO, 
+	           P.NAME, 
+	           C.QT, 
+	           P.START_DATE, 
+	           P.END_DATE, 
+	           P.CONTENT, 
+	           E.PRICE,
+	           E.NO AS EVENT_NO
+	    FROM CART C
+	    LEFT JOIN EVENT E ON C.EVENT_NO = E.NO
+	    JOIN PUBLIC_DATA_EVENT P ON E.PUBLIC_DATA_EVENT_NO = P.NO
+	    JOIN USER_ACCOUNT U ON C.USER_ACCOUNT_NO = U.NO  <!-- USER_ACCOUNT 테이블과 조인 -->
+	    WHERE U.NO = #{userNo}  <!-- userNo로 장바구니 데이터 조회 -->
+	</select>
+	<!-- ################################################################################################## -->
+	<!-- ################################################################################################## -->
+	<!-- 로그인 된 사용자(토큰 no = userNo)의 장바구니 삭제 쿼리. -->
+	<delete id="deleteCartData" parameterType="Cart">
+		DELETE
+		FROM CART
+		WHERE NO = #{no}
+	</delete>
+	<!-- ################################################################################################## -->
+	<!-- ################################################################################################## -->
+	<!-- 로그인된 사용자(토큰 no = userNo)의 예매내역 출력 쿼리. -->
+	<select id="getReservedData" parameterType="User" resultType="ReservedDTO">
+		SELECT 
+		    R.NO,
+		    E.NO,
+		    RESERVED_DATE, 
+		    P.NAME, 
+		    R.QT, -- RESERVED 테이블에서 QT 값을 사용
+		    P.END_DATE, 
+		    (E.PRICE * R.QT) AS TOTAL_COST -- RESERVED 테이블의 QT를 사용
+		FROM 
+		    RESERVED R
+		JOIN 
+		    EVENT E ON R.EVENT_NO = E.NO
+		JOIN 
+		    PUBLIC_DATA_EVENT P ON E.PUBLIC_DATA_EVENT_NO = P.NO
+		WHERE 
+		    R.USER_ACCOUNT_NO = #{no} AND P.END_DATE >= SYSDATE
+		ORDER BY R.NO DESC
+	</select>
+	<!-- ################################################################################################## -->
+	<!-- ################################################################################################## -->
+	<delete id="deleteReservedData" parameterType="Integer">
+		DELETE
+		FROM RESERVED
+		WHERE NO = #{no}
+	</delete>
+	<!-- ################################################################################################## -->
+	<!-- ################################################################################################## -->
+	<!-- 취소내역 조회. -->
+	<select id="getReservedCancelData" parameterType="ReservedCancelDTO">
+		SELECT 
+		    R.NO AS no,
+		    R.EVENT_NO AS eventNo,
+		    R.RESERVED_DATE AS reservedDate, 
+		    P.NAME AS name, 
+		    R.QT AS qt,  -- Changed to use QT from CANCELED table
+		    P.END_DATE AS endDate, 
+		    (E.PRICE * R.QT) AS totalCost  -- Updated to use QT from CANCELED table
+		FROM 
+		    CANCELED R
+		JOIN 
+		    EVENT E ON R.EVENT_NO = E.NO
+		JOIN 
+		    PUBLIC_DATA_EVENT P ON E.PUBLIC_DATA_EVENT_NO = P.NO
+		WHERE 
+		    R.USER_ACCOUNT_NO = #{userAccountNo}
+		ORDER BY 
+		    R.NO DESC
+	</select>
+	<!-- ################################################################################################## -->
+	<!-- 아이디, 제공자를 토대로 로그인 유저 반환후 비밀번호 헤싱해서 로그인 확인 확인-->
+	<select id="checkLogin" parameterType="User" resultType="User">
+		SELECT *
+		FROM USER_ACCOUNT
+		WHERE ID = #{id} AND PROVIDER = #{provider}   
+	</select>
+	<!-- 아이디와 계정 제공자 로그인확인 -->
+	<select id="findUserByIdAndProvider" parameterType="User"
+		resultType="User">
+		SELECT * FROM USER_ACCOUNT
+		WHERE ID = #{id} AND PROVIDER = #{provider}  
+	</select>
+		<!-- 이메일과 제공자로 가입 유무 확인 -->
+	<select id="findUserByEmail" parameterType="User"
+		resultType="User">
+		SELECT * FROM USER_ACCOUNT
+		WHERE EMAIL = #{email} AND PROVIDER = #{provider}  
+	</select>
+		<!-- 이메일과 제공자, 아이디로 가입 유무 확인 -->
+	<select id="findUserByEmailAndId" parameterType="User"
+		resultType="User">
+		SELECT * FROM USER_ACCOUNT
+		WHERE ID = #{id} AND EMAIL = #{email} AND PROVIDER = #{provider}  
+	</select>
+			<!-- 아이디와 임시 비밀번호와 제공자를 받아서 비밀번호를 업데이트 -->
+	<update id="updateRandomPwdById" parameterType="User">
+		UPDATE USER_ACCOUNT SET PWD = #{pwd}
+		WHERE ID = #{id} AND PROVIDER = #{provider}  
+	</update>
+
+<select id="checkUserExists" parameterType="User" resultType="User">
+    SELECT * FROM USER_ACCOUNT
+    <where>
+        <trim prefixOverrides="AND">
+            <if test="id != null">
+                AND ID = #{id}
+            </if>
+            <if test="email != null">
+                AND EMAIL = #{email}
+            </if>
+            <if test="nickname != null">
+                AND NICKNAME = #{nickname}
+            </if>
+        </trim>
+    </where>
+</select>
+
+</mapper>

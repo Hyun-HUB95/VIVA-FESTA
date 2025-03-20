@@ -1,0 +1,287 @@
+/* ✅ 헤더 컨테이너 */
+.Header-navbar-all {
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #ddd;
+}
+.Header-navbar-all.dark-mode {
+  border-bottom: 1px solid #444;
+}
+
+.Header-navbar-all-active {
+}
+#Header-headerContainer {
+  z-index: 3;
+}
+
+/* ✅ 네비게이션 링크 스타일 */
+.Header-nav-links .Header-nav-link {
+  margin-right: 15px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  transition: color 0s !important;
+}
+
+/* ✅ 사용자 정보 드롭다운 */
+.Header-user-info {
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  color: white;
+  margin-right: 15px;
+}
+
+.Header-user-name {
+  font-weight: bold;
+}
+
+.Header-dropdown-icon {
+  color: white;
+}
+
+/* ✅ 사용자 드롭다운 메뉴 */
+.Header-user-dropdown .dropdown-toggle::after {
+  display: none;
+}
+
+.Header-user-dropdown .Header-dropdown-menu {
+  border-radius: 8px;
+  padding: 8px;
+  background-color: #222;
+}
+
+.Header-user-dropdown .Header-dropdown-item {
+  color: white !important;
+}
+
+.Header-user-dropdown .Header-dropdown-item:hover {
+  background-color: #444 !important;
+}
+
+/* ✅ 깃허브 링크 */
+.Header-github-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.Header-cart-icon {
+  cursor: pointer;
+}
+
+.Header-github-link:hover svg {
+  color: #999;
+}
+
+/* ✅ 포인트 표시 */
+.Header-points-display {
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+}
+
+/* ✅ 알림 배지 */
+.Header-notification-badge {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  font-size: 0.8rem;
+  padding: 5px;
+}
+
+/* ✅ 다크 모드 버튼 */
+.Header-theme-toggle-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.Header-theme-toggle-btn:hover {
+  opacity: 0.8;
+}
+
+/* ✅ 다크 모드 스타일 */
+body.Header-dark-mode {
+  background-color: #181818;
+  color: white;
+}
+
+/* ✅ '축제' 메뉴 좌측 정렬 */
+.Header-nav-links .Header-nav-link {
+  margin-left: 10px;
+  font-size: 1.2rem;
+}
+
+/* ✅ 네비게이션 애니메이션 */
+.Header-festival-nav {
+  position: relative;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #ddd;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+  transform: translateY(0%);
+  opacity: 1;
+}
+
+/* ✅ 다크 모드에서 네비게이션 바 스타일 */
+body.Header-dark-mode .Header-festival-nav {
+  background-color: #414141;
+  border-bottom: 1px solid #444;
+}
+
+/* ✅ 네비게이션이 사라질 때 */
+.Header-festival-nav.Header-hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+/* ✅ 네비게이션이 나타날 때 */
+.Header-festival-nav.Header-with-animation {
+  transform: translateY(0);
+  opacity: 1;
+  flex: 3;
+}
+
+/* ✅ 네비게이션 내부 컨테이너 */
+.Header-festival-nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  padding-left: 15px;
+}
+
+/* ✅ 네비게이션 아이템 */
+.Header-festival-nav-item {
+  text-align: center;
+  font-size: 1rem;
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s, font-weight 0.3s;
+  position: relative;
+  padding: 10px 15px;
+  margin-right: 10px;
+}
+
+/* ✅ 다크 모드에서 네비게이션 아이템 */
+body.Header-dark-mode .Header-festival-nav-item {
+  color: white;
+}
+
+/* ✅ 활성화된 항목 스타일 */
+.Header-festival-nav-item.Header-active {
+  color: black;
+  font-weight: bold;
+}
+
+/* ✅ 다크 모드에서 활성화된 항목 */
+body.Header-dark-mode .Header-festival-nav-item.Header-active {
+  color: white;
+}
+
+/* ✅ 활성화된 항목 하단 바 */
+.Header-festival-nav-item.Header-active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 3px;
+  background-color: black;
+  border-radius: 3px;
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+/* ✅ 다크 모드에서 활성화된 항목 하단 바 */
+body.Header-dark-mode .Header-festival-nav-item.Header-active::after {
+  background-color: white;
+}
+
+/* ✅ 네비게이션 아이콘 */
+.Header-festival-nav-item svg {
+  display: block;
+  margin: 0 auto;
+  color: #333;
+}
+
+/* ✅ 다크 모드에서 네비게이션 아이콘 */
+body.Header-dark-mode .Header-festival-nav-item svg {
+  color: white;
+}
+
+/* ✅ 기본 상태에서 강조 바 숨김 */
+.Header-festival-nav-item::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 3px;
+  background-color: black;
+  border-radius: 3px;
+  opacity: 0;
+  transform: scaleX(0);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* ✅ 다크 모드에서 기본 강조 바 색상 변경 */
+body.Header-dark-mode .Header-festival-nav-item::after {
+  background-color: white;
+}
+
+/* ✅ 네비게이션 애니메이션 (토글할 때만) */
+.Header-festival-nav.Header-with-animation {
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+@keyframes Header-slide-down {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ✅ 다크 모드 드롭다운 메뉴 스타일 */
+.Header-user-dropdown .Header-dropdown-menu {
+  background-color: white;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+body.Header-dark-mode .Header-user-dropdown .Header-dropdown-menu {
+  background-color: #222;
+  border: 1px solid #444;
+}
+
+body.Header-dark-mode .Header-user-dropdown .Header-dropdown-item {
+  color: white !important;
+}
+
+body.Header-dark-mode .Header-user-dropdown .Header-dropdown-item:hover {
+  background-color: #444 !important;
+}
+
+#Header-up-button {
+  position: fixed !important;
+  bottom: 50px; /* 화면 하단에서 20px 위 */
+  right: 50px; /* 화면 오른쪽에서 20px 왼쪽 */
+  cursor: pointer;
+  z-index: 9999 !important;
+}
+.Header-logo {
+  line-height: 100px;
+}
+.Header-top-line {
+  z-index: 1051;
+}

@@ -1,0 +1,12 @@
+specVersion: "v1beta"
+serviceId: "khfinal"
+location: "us-central1"
+schema:
+  source: "./schema"
+  datasource:
+    postgresql:
+      database: "fdcdb"
+      cloudSql:
+        instanceId: "khfinal-fdc"
+      # schemaValidation: "COMPATIBLE"
+connectorDirs: ["./connector"]

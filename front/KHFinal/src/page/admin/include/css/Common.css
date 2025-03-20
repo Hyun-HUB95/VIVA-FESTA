@@ -1,0 +1,26 @@
+.admin-table table {
+  width: 100%;
+  border-collapse: collapse;
+  display: block;
+}
+
+.admin-table tbody {
+  display: inline-block;
+  overflow-y: scroll;
+  max-height: 70vh;
+}
+
+.admin-table thead,
+.admin-table tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  overflow-wrap: break-word;
+  text-wrap-style: pretty;
+}
+
+.admin-table input:not(.form-check-input) {
+  border: none;
+  outline: none;
+  background-color: inherit;
+}

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zeus.qna.mapper.QnaMapper">
+
+	<select id="getAllQna" parameterType="SortDTO"
+		resultType="QnaDTO">
+		SELECT
+		ROW_NUMBER() OVER (ORDER BY q.no) AS rowNo,
+		q.no AS no,
+		e.no AS
+		event_no,
+		q.title,
+		q.content,
+		q.user_account_no,
+		q.sub_date,
+		q.qna_no,
+		p.name AS event_name,
+		u.name AS user_name
+		FROM qna q
+		JOIN user_account u
+		ON q.user_account_no = u.no
+		JOIN event e ON q.event_no = e.no
+		JOIN
+		public_data_event p ON e.public_data_event_no = p.no
+		WHERE qna_no = 0
+		<!-- 검색 조건 추가 -->
+		    <if test="search != null and search != ''">
+            <choose>
+                <when test="searchOption == 'name'">
+                    AND p.name LIKE '%' || #{search} || '%'
+                </when>
+                <when test="searchOption == 'title'">
+                    AND q.title LIKE '%' || #{search} || '%'
+                </when>
+                <when test="searchOption == 'writer'">
+                    AND u.name LIKE '%' || #{search} || '%'
+                </when>
+            </choose>
+        </if>
+
+		ORDER BY ROWNO DESC
+		OFFSET ((#{page} - 1) * 10) ROWS FETCH NEXT 10 ROWS
+		ONLY
+	</select>
+
+	<insert id="insertQna" parameterType="Qna">
+		INSERT INTO qna (no ,title,
+		content, user_account_no, sub_date,event_no)
+		VALUES
+		(seq_qna_no.nextval,#{title}, #{content}, #{userAccountNo},
+		sysdate,
+		#{eventNo})
+	</insert>
+
+	<insert id="insertReplyQna" parameterType="Qna">
+		INSERT INTO qna (no,
+		title, content, user_account_no, sub_date, event_no,
+		qna_no)
+		VALUES (
+		seq_qna_no.nextval,
+		'답변',
+		#{content},
+		#{userAccountNo},
+		sysdate,
+		(SELECT
+		event_no FROM qna WHERE no = #{qnaNo}),
+		#{qnaNo}
+		)
+	</insert>
+
+
+	<update id="updateQna">
+		UPDATE qna SET title=#{title}, content=#{content}
+		WHERE no=#{no}
+	</update>
+
+	<select id="getFestivalList" resultType="PublicDataEventDTO">
+		SELECT e.no, name FROM
+		EVENT E
+		LEFT JOIN public_data_event P
+		ON E.public_data_event_NO= P.NO
+	</select>
+	<select id="getReply" parameterType="Qna" resultType="String">
+		select
+		content from qna where qna_No=#{no}
+	</select>
+
+	<select id="getPageCount" resultType="int"
+		parameterType="SortDTO">
+		select count(*)
+		FROM qna q
+		JOIN user_account u ON q.user_account_no = u.no
+		JOIN event e ON
+		q.event_no = e.no
+		JOIN public_data_event p ON e.public_data_event_no =
+		p.no
+		WHERE qna_no = 0
+		    <if test="search != null and search != ''">
+            <choose>
+                <when test="searchOption == 'name'">
+                    AND p.name LIKE '%' || #{search} || '%'
+                </when>
+                <when test="searchOption == 'title'">
+                    AND q.title LIKE '%' || #{search} || '%'
+                </when>
+                <when test="searchOption == 'writer'">
+                    AND u.name LIKE '%' || #{search} || '%'
+                </when>
+            </choose>
+        </if>
+	</select>
+	
+	<select id="getisAuthenticated" parameterType="Qna"
+		resultType="int">
+		SELECT COUNT(*) FROM EVENT E
+		WHERE
+		E.USER_ACCOUNT_NO =
+		#{userAccountNo} AND
+		E.NO=#{eventNo}
+	</select>
+	<delete id="deletePost" parameterType="int">
+	    DELETE FROM QNA WHERE no = #{no}
+	</delete>
+	<delete id="deleteReply" parameterType="int">
+	    DELETE FROM QNA WHERE qna_no = #{no}
+	</delete>
+
+</mapper>

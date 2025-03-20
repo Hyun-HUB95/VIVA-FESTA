@@ -1,0 +1,56 @@
+.Footer-light-mode {
+  background-color: #ffffff; /* ✅ 원하는 색상으로 변경 */
+  color: #000000; /* ✅ 텍스트 색상 조정 */
+}
+
+.Footer-container-fluid {
+  padding: 5rem;
+  margin-top: 5rem;
+}
+
+.Footer-row {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.Footer-col a {
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease-in-out;
+}
+
+.Footer-col a {
+  color: #080808; /* 화이트 모드 기본 글씨색 */
+}
+
+.Footer-col a:hover {
+  color: #888; /* 화이트 모드에서 hover 시 회색 */
+}
+
+.bg-dark .Footer-col a {
+  color: #fff; /* 다크 모드 기본 글씨색 */
+}
+
+.bg-dark .Footer-col a:hover {
+  color: #bbb; /* 다크 모드에서 hover 시 연한 회색 */
+}
+
+.Footer-copyRight {
+  padding-top: 40px;
+  padding-right: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.Footer-copyRight img {
+  width: 120px;
+  height: 40px;
+  margin-right: 3px;
+  margin-top: 3px;
+}
+
+.Footer-copyRight .Footer-webCertification {
+  width: 70px;
+}

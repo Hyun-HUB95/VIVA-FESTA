@@ -1,0 +1,64 @@
+/* ✅ 섹션 간격 추가 */
+
+/* ✅ 깜빡이는 화살표 효과 */
+.scroll-down-arrow {
+  text-align: center;
+  width: 100px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.arrow {
+  font-size: 5rem;
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.arrow-container {
+  position: relative;
+  text-align: center;
+  margin: 50px 0;
+}
+
+/* ✅ 간격을 벌리기 위한 가짜 div */
+.spacer {
+  height: 2000px; /* ✅ 각 섹션 사이에 150px 여백 추가 */
+  width: 100%;
+}
+
+/* ✅ MainCarousel 높이 강제 설정 */
+.main-carousel {
+  min-height: 600px;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+  min-height: 600px;
+}
+
+/* ✅ 화살표 위치 조정 */
+.arrow-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.main-carousel-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.container-sm {
+  min-width: 600px;
+}

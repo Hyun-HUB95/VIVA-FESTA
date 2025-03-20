@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "project-viva-festa",
+    "project-viva-festa": "project-viva-festa"
+  },
+  "targets": {},
+  "etags": {}
+}

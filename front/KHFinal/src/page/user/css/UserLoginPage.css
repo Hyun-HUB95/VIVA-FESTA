@@ -1,0 +1,59 @@
+/* 전체 로그인 페이지 카드 스타일 */
+.UserLoginPage-form-container {
+  max-width: 500px;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+/* 부트스트랩의 floating label 스타일을 위한 추가 클래스 */
+.UserLoginPage-form-container .form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+}
+
+.UserLoginPage-form-container .form-floating {
+  margin-bottom: 1rem;
+}
+
+.UserLoginPage-form-container .form-floating label {
+  color: #495057;
+}
+
+/* 체크박스 스타일 */
+.UserLoginPage-form-container .form-check-label {
+  color: #495057;
+  font-size: 0.875rem;
+}
+
+/* 로그인 버튼 */
+.UserLoginPage-button-container .btn {
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+/* 외부 API 로그인 컨테이너 */
+.UserLoginPage-api-container {
+  margin-top: 20px;
+}
+
+/* 아이디 찾기, 비밀번호 찾기, 회원가입 링크의 hover 효과 */
+.UserLoginPage-nav-link-hover:hover {
+  color: #007bff;  /* 원하는 색상으로 변경 (예: 파란색) */
+}
+
+/* 다크 모드일 경우 색상 변경 */
+.UserLoginPage-nav-link-hover.dark-mode:hover {
+  color: #80bdff; /* 다크 모드에서의 다른 색상 */
+}
+
+/* 기본 색상 설정 (hover가 아닐 때) */
+.UserLoginPage-nav-link-hover {
+  color: inherit; /* 기본 텍스트 색상 유지 */
+}
+
+/* 마우스를 올렸을 때 텍스트 색상이 변경되는 효과 */
+.UserLoginPage-nav-link-hover:hover {
+  color: #007bff !important; /* 선택한 텍스트 색상 */
+}

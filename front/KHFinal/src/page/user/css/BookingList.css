@@ -1,0 +1,217 @@
+.BookingList-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 20px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.BookingList-header {
+  text-align: left;
+  width: 100%;
+  margin-top: 0;
+  margin-left: 0;
+  margin-bottom: 40px;
+  font-size: 2.5rem;
+}
+
+.BookingList-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 30px;
+}
+
+.BookingList-menu {
+  width: 220px; /* Fixed width for the menu */
+  padding: 20px;
+  box-sizing: border-box;
+  border-top: 3.5px solid;
+  border-bottom: 3.5px solid;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%; /* Set height to 100% to make it extend fully */
+  border-radius: 0px !important;
+  top: 0; /* Sticks to the top of the container */
+}
+
+.BookingList-menu ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.BookingList-menu li {
+  margin: 20px 0;
+}
+
+.BookingList-menu span {
+  font-weight: bold;
+  display: inline-block; /* Changed to inline-block for text width */
+  padding: 10px;
+  border-radius: 5px;
+  position: relative;
+  transition: color 0.3s ease, padding-left 0.3s ease;
+  cursor: pointer;
+  font-size: 1.1rem;
+  margin-bottom: -15px;
+}
+
+.BookingList-menu span:hover {
+  padding-left: 5px;
+}
+
+.BookingList-menu span::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 5px;
+  width: 0; /* Initially set width to 0 */
+  height: 2px;
+  background-color: #252429;
+  transition: width 0.3s ease;
+}
+
+.BookingList-menu.dark-mode span::before {
+  background-color: white;
+}
+
+.BookingList-menu span:hover::before {
+  width: 100%; /* Underline will expand to the width of the text */
+}
+
+.BookingList-menu span.active::before {
+  width: 100%;
+}
+
+/* 오른쪽 콘텐츠 부분 스타일 */
+.BookingList-content {
+  width: 65vw; /* 70vw에서 65vw로 변경 */
+  max-width: 900px; /* 최대 너비 900px로 변경 */
+  margin: 0px auto 0px 30px; /* 중앙 정렬 및 여백 설정 */
+  margin-bottom: 6vw; /* 하단 여백 줄임 */
+  overflow: hidden; /* 콘텐츠가 넘치지 않도록 설정 */
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* 높이를 100%로 설정하여 메뉴와 높이를 동일하게 설정 */
+  padding: 25px; /* 콘텐츠 영역에 여백 추가 */
+  background-color: #fff; /* 기본 배경색을 흰색으로 설정 */
+  box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px; /* 둥근 모서리 */
+}
+
+#BookingList-cancel
+{
+  text-align: center;
+  display: flex;
+  justify-content: center; /* 가로 중앙 정렬 */
+  align-items: center;     /* 세로 중앙 정렬 */
+  min-height: 200px;       /* 기본 최소 높이 설정 */
+  font-size: 16px;         /* 글자 크기 조정 */
+  color: none;
+}
+
+.BookingList-content.dark-mode {
+  background-color: #333; /* 다크모드 배경색 */
+  color: white;
+  box-shadow: 8px 8px 10px rgba(255, 255, 255, 0.2); /* 다크모드에서 그림자 색을 밝게 */
+}
+
+.BookingList-section {
+  display: none;
+}
+
+.BookingList-section #BookingList-cancle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 100px auto;
+}
+
+.BookingList-section.active {
+  display: block;
+}
+
+.BookingList-table {
+  width: 100%;
+  border-collapse: separate; /* 테이블 셀 간격을 유지 */
+  border-spacing: 0; /* 셀 간격을 없애기 위해 설정 */
+  border-bottom: 2.5px solid;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+}
+
+.BookingList-th,
+.BookingList-td {
+  padding: 0.8em 0.9em; /* 여백을 약간 줄임 */
+  text-align: center; /* 가운데 정렬 */
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #ddd;
+}
+
+.BookingList-th {
+  background-color: #f1f1f1;
+  border-top: 2.5px solid;
+  border-bottom: 2.5px solid;
+  font-weight: bold;
+  text-align: center;
+}
+
+.BookingList-content.dark-mode .BookingList-th {
+  color: #fff !important;  /* 텍스트 색상 강제로 지정 */
+  background-color: #222222 !important;  /* 배경색 강제로 지정 */
+}
+
+.BookingList-td input[type="checkbox"] {
+  transform: scale(1.2); /* 체크박스 크기 */
+}
+
+.BookingList-button {
+  padding: 12px 25px;
+  margin-top: 30px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: #252429;
+  color: white;
+  width: 100%;
+  font-size: 1.1rem;
+}
+
+.BookingList-button:hover {
+  background-color: #252429d8;
+}
+
+.BookingList-section h2 {
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+}
+
+.BookingList-warning {
+  color: red;
+  text-align: right;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+@media (max-width: 768px)
+{
+  #BookingList-cancel
+  {
+    min-height: 300px; /* 모바일에서 더 넓은 높이 제공 */
+  }
+}
+
+@media (max-width: 480px)
+{
+  #BookingList-cancel
+  {
+    min-height: 350px; /* 더 작은 화면에서 높이 더 확장 */
+    font-size: 18px;   /* 작은 화면에서 글자 크기 증가 */
+  }
+}

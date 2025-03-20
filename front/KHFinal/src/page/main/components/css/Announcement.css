@@ -1,0 +1,53 @@
+.Announcement {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.Announcement-content {
+  width: 100%;
+  height: 30px;
+  display: flex;
+}
+.Announcement-content-body {
+  display: flex;
+}
+
+.Announcement-slider {
+  width: 100%;
+  height: 30px;
+  position: sticky;
+  bottom: 16px;
+  margin-top: 10px;
+}
+
+.Announcement-plus {
+  position: absolute;
+  bottom: 40px;
+  right: -1%;
+}
+.custom-arrow {
+  position: absolute;
+  right: -90%; /* 버튼을 오른쪽에 정렬 */
+  z-index: 10;
+  cursor: pointer;
+  background: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  pointer-events: none;
+}
+
+.custom-arrow svg {
+  pointer-events: auto;
+}
+
+.custom-prev {
+  bottom: 50%;
+  right: -100%;
+}
+
+.custom-next {
+  top: 60%;
+  right: -100%;
+}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zeus.payments.mapper.PaymentMapper">
+
+	<!-- 예약 테이블에 삽입 -->
+	<insert id="insertReservation">
+		INSERT INTO reserved 
+		VALUES (seq_reserved_no.nextval,#{reservationId}, #{eventNo},#{userAccountNo}, #{qt},SYSDATE, #{price})
+	</insert>
+
+	<!-- 장바구니에서 삭제 -->
+	<delete id="deleteCartItem">
+		DELETE FROM cart WHERE no = #{cartNo}
+	</delete>
+	<!-- 이벤트 가격 조회 -->
+	<select id="getEventPrice" resultType="Integer">
+		SELECT price FROM event WHERE no = #{eventNo}
+	</select>
+</mapper>
