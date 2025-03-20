@@ -39,7 +39,7 @@ VIVA-FESTA는 지역 축제 예매를 위한 프로젝트입니다. 공공데이
 </details>
 
 📌 주요 기능
-<details> <summary></summary>
+<details> <summary>보기</summary>
 회원가입 및 수정
 사용자가 가입 시 비밀번호는 BCrypt로 암호화되어 저장됩니다.
 회원 정보 수정 시, 비밀번호는 다시 암호화하여 처리합니다.
@@ -57,7 +57,7 @@ Toss Payments API를 사용하여 결제 기능을 구현했습니다.
 </details>
 
 📌 핵심 기술
-<details> <summary></summary>
+<details> <summary>보기</summary>
 BCrypt: 회원가입 및 비밀번호 수정 시, 비밀번호를 안전하게 암호화하여 저장합니다.
 세션 관리: 사용자의 세션이 만료되면 자동으로 로그아웃되도록 설정되어 있습니다.
 휠 스크롤: 페이지 내에서 휠 스크롤을 사용하여 페이지 이동 기능을 구현하였습니다.
@@ -65,7 +65,7 @@ Toss Payments API: 안전한 결제 처리를 위한 API를 사용합니다.
 </details>
 
 📌 트러블슈팅
-<details> <summary></summary>
+<details> <summary>보기</summary>
 1. Toss Payments 결제 실패
 결제 실패 시, API 호출 로그를 확인하여 오류 메시지를 추적하세요.
 네트워크 문제나 API 키 설정이 잘못된 경우 결제에 실패할 수 있습니다.
